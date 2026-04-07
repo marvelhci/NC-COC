@@ -8,7 +8,7 @@ import time
 #  PAGE CONFIG
 # ─────────────────────────────────────────────
 st.set_page_config(
-    page_title="Live Quiz Challenge",
+    page_title="How Well Do You Know the NCs?",
     page_icon="🏆",
     layout="centered",
     initial_sidebar_state="collapsed",
@@ -310,8 +310,7 @@ def medal(rank: int) -> str:
 # ─────────────────────────────────────────────
 st.markdown("""
 <div class="hero">
-  <h1>⚡ LIVE QUIZ CHALLENGE</h1>
-  <p>REAL-TIME · COMPETITIVE · RANKED</p>
+  <h1>HOW WELL DO YOU KNOW THE NCs?</h1>
 </div>
 """, unsafe_allow_html=True)
 
@@ -320,7 +319,6 @@ st.markdown("""
 # ═════════════════════════════════════════════
 if st.session_state.page == "join":
     st.markdown('<div class="card">', unsafe_allow_html=True)
-    st.markdown("### 🪖 Enter the Arena")
     st.markdown("Fill in your details to begin. You have **one attempt** — make it count.")
     st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
 
