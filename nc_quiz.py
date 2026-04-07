@@ -19,11 +19,11 @@ st.set_page_config(
 # ─────────────────────────────────────────────
 st.markdown("""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Share+Tech+Mono&display=swap');
 
 /* ── global ── */
 html, body, [class*="css"] {
-    font-family: 'Rajdhani', sans-serif;
+    font-family: 'Inter', sans-serif;
     background-color: #0b0f1a;
     color: #e0e6f0;
 }
@@ -42,7 +42,7 @@ html, body, [class*="css"] {
     margin-bottom: 0;
 }
 .hero p {
-    font-family: 'Share Tech Mono', monospace;
+    font-family: 'Inter', monospace;
     color: #7a8ba0;
     font-size: 0.85rem;
     letter-spacing: 0.2em;
@@ -61,7 +61,7 @@ html, body, [class*="css"] {
 
 /* ── question label ── */
 .q-label {
-    font-family: 'Share Tech Mono', monospace;
+    font-family: 'Inter', monospace;
     color: #00e5ff;
     font-size: 0.75rem;
     letter-spacing: 0.2em;
@@ -92,7 +92,7 @@ div[data-testid="stRadio"] label:hover {
 div.stButton > button {
     background: linear-gradient(135deg, #0072ff, #00e5ff);
     color: #0b0f1a;
-    font-family: 'Rajdhani', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 700;
     font-size: 1.1rem;
     letter-spacing: 0.1em;
@@ -112,7 +112,7 @@ div.stButton > button:hover {
 .lb-table {
     width: 100%;
     border-collapse: collapse;
-    font-family: 'Share Tech Mono', monospace;
+    font-family: 'Inter', monospace;
     font-size: 0.9rem;
 }
 .lb-table th {
@@ -175,7 +175,7 @@ div[data-testid="stSelectbox"] div {
     color: #e0e6f0 !important;
     border-color: #1e3a4f !important;
     border-radius: 8px;
-    font-family: 'Rajdhani', sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
 /* ── section divider ── */
@@ -322,7 +322,7 @@ if st.session_state.page == "join":
     st.markdown("Fill in your details to begin. You have **one attempt** — make it count.")
     st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
 
-    name = st.text_input("Full Name", placeholder="e.g. CPL Jane Smith", max_chars=60)
+    name = st.text_input("Full Name", placeholder="e.g. ME4A Nethan Tan", max_chars=60)
     squadron = st.selectbox("Squadron", ["— Select —"] + SQUADRONS)
 
     st.markdown("<br>", unsafe_allow_html=True)
@@ -414,17 +414,17 @@ elif st.session_state.page == "done":
 
     @st.fragment(run_every=5)
     def live_leaderboard():
-        docs = (
-            db.collection("leaderboard")
-              .order_by("score", direction=firestore.Query.DESCENDING)
-              .order_by("timestamp", direction=firestore.Query.ASCENDING)
-              .limit(10)
-              .stream()
-        )
-        rows = [d.to_dict() for d in docs]
-
-        if not rows:
-            st.info("No scores yet — be the first!")
+        try:
+            docs = (
+                db.collection("leaderboard")
+                .order_by("score", direction=firestore.Query.DESCENDING)
+                .order_by("timestamp", direction=firestore.Query.ASCENDING)
+                .limit(10)
+                .stream()
+            )
+            rows = [d.to_dict() for d in docs]
+        except Exception as e:
+            st.warning("⏳ Leaderboard index is still building — ready in ~1 min. Hang tight!")
             return
 
         table_rows = ""
