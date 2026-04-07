@@ -23,7 +23,7 @@ st.markdown("""
 
 /* ── global ── */
 html, body, [class*="css"] {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter';
     background-color: #0b0f1a;
     color: #e0e6f0;
 }
@@ -42,7 +42,7 @@ html, body, [class*="css"] {
     margin-bottom: 0;
 }
 .hero p {
-    font-family: 'Inter', monospace;
+    font-family: 'Inter';
     color: #7a8ba0;
     font-size: 0.85rem;
     letter-spacing: 0.2em;
@@ -61,7 +61,7 @@ html, body, [class*="css"] {
 
 /* ── question label ── */
 .q-label {
-    font-family: 'Inter', monospace;
+    font-family: 'Inter';
     color: #00e5ff;
     font-size: 0.75rem;
     letter-spacing: 0.2em;
@@ -92,7 +92,7 @@ div[data-testid="stRadio"] label:hover {
 div.stButton > button {
     background: linear-gradient(135deg, #0072ff, #00e5ff);
     color: #0b0f1a;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter';
     font-weight: 700;
     font-size: 1.1rem;
     letter-spacing: 0.1em;
@@ -112,7 +112,7 @@ div.stButton > button:hover {
 .lb-table {
     width: 100%;
     border-collapse: collapse;
-    font-family: 'Inter', monospace;
+    font-family: 'Inter';
     font-size: 0.9rem;
 }
 .lb-table th {
@@ -175,7 +175,7 @@ div[data-testid="stSelectbox"] div {
     color: #e0e6f0 !important;
     border-color: #1e3a4f !important;
     border-radius: 8px;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter'
 }
 
 /* ── section divider ── */
