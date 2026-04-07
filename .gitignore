@@ -1,0 +1,10 @@
+# Streamlit secrets (local only)
+.streamlit/secrets.toml
+
+# Firebase Service Account Key (The JSON file)
+*.json
+
+# Python environment & cache
+__pycache__/
+.venv/
+.env
