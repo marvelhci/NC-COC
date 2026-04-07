@@ -320,7 +320,6 @@ def _render_leaderboard():
 # ═════════════════════════════════════════════
 if st.session_state.page == "join":
     st.markdown("### 🏆 Live Leaderboard")
-    st.caption("Auto-refreshes every 5 seconds.")
 
     @st.fragment(run_every=5)
     def leaderboard_join():
@@ -418,7 +417,6 @@ elif st.session_state.page == "done":
 
     st.markdown("---")
     st.markdown("### 🏆 Live Leaderboard")
-    st.caption("Auto-refreshes every 5 seconds — no page reload needed.")
 
     @st.fragment(run_every=5)
     def leaderboard_done():
