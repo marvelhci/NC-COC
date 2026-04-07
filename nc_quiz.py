@@ -19,35 +19,17 @@ st.set_page_config(
 # ─────────────────────────────────────────────
 st.markdown("""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
 
-/* ── global — force Inter on everything ── */
-html, body, [class*="css"], * {
+/* ── global: font + page bg only — no wildcard background ── */
+html, body, [class*="css"] {
     font-family: 'Inter', sans-serif !important;
     background-color: #0b0f1a;
     color: #e0e6f0;
 }
 
-/* ── Streamlit native element overrides ── */
-.stMarkdown, .stMarkdown p, .stMarkdown h1,
-.stMarkdown h2, .stMarkdown h3, .stMarkdown li {
-    font-family: 'Inter', sans-serif !important;
-}
-
-p, span, div, label, input, select, textarea, button {
-    font-family: 'Inter', sans-serif !important;
-}
-
-div[data-testid="stTextInput"] label,
-div[data-testid="stTextInput"] input,
-div[data-testid="stSelectbox"] label,
-div[data-testid="stSelectbox"] div,
-div[data-testid="stSelectbox"] span,
-div[data-testid="stRadio"] label,
-div[data-testid="stRadio"] span,
-div[data-testid="stForm"] label,
-div[data-testid="stCaption"] p,
-div[data-testid="stMarkdownContainer"] p {
+/* keep font consistent without nuking button/input backgrounds */
+* {
     font-family: 'Inter', sans-serif !important;
 }
 
@@ -57,20 +39,12 @@ div[data-testid="stMarkdownContainer"] p {
     padding: 2rem 0 1rem;
 }
 .hero h1 {
-    font-family: 'Inter', sans-serif !important;
-    font-size: 2.6rem;
-    font-weight: 700;
+    font-size: 4rem;
+    font-weight: 900;
     letter-spacing: 0.05em;
-    color: #00e5ff;
-    text-shadow: 0 0 20px rgba(0,229,255,0.5);
+    color: #e0e6f0;
+    text-shadow: none;
     margin-bottom: 0;
-}
-.hero p {
-    font-family: 'Inter', sans-serif !important;
-    color: #7a8ba0;
-    font-size: 0.85rem;
-    letter-spacing: 0.2em;
-    margin-top: 0.3rem;
 }
 
 /* ── cards ── */
@@ -83,126 +57,19 @@ div[data-testid="stMarkdownContainer"] p {
     box-shadow: 0 4px 30px rgba(0,229,255,0.05);
 }
 
-/* ── question label ── */
-.q-label {
-    font-family: 'Inter', sans-serif !important;
-    color: #00e5ff;
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
-    margin-bottom: 0.25rem;
-}
-.q-text {
-    font-family: 'Inter', sans-serif !important;
-    font-size: 1.15rem;
-    font-weight: 600;
-    color: #dce8f5;
-    margin-bottom: 0.75rem;
-}
-
-/* ── progress bar ── */
-.stProgress > div > div > div > div {
-    background: linear-gradient(90deg, #00e5ff, #0072ff);
-}
-
-/* ── radio options ── */
-div[data-testid="stRadio"] label {
-    font-family: 'Inter', sans-serif !important;
-    color: #b0c4d8 !important;
-    font-size: 1rem;
-}
-div[data-testid="stRadio"] label:hover {
-    color: #00e5ff !important;
-}
-
-/* ── buttons ── */
-div.stButton > button {
-    background: linear-gradient(135deg, #0072ff, #00e5ff);
-    color: #0b0f1a;
-    font-family: 'Inter', sans-serif !important;
-    font-weight: 700;
-    font-size: 1.1rem;
-    letter-spacing: 0.05em;
-    border: none;
-    border-radius: 8px;
-    padding: 0.65rem 2.5rem;
-    width: 100%;
-    cursor: pointer;
-    transition: opacity 0.2s;
-    box-shadow: 0 0 20px rgba(0,114,255,0.3);
-}
-div.stButton > button:hover {
-    opacity: 0.88;
-}
-
-/* ── form submit button ── */
-div[data-testid="stFormSubmitButton"] button {
-    font-family: 'Inter', sans-serif !important;
-    font-weight: 700 !important;
-}
-
-/* ── leaderboard table ── */
-.lb-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-family: 'Inter', sans-serif !important;
-    font-size: 0.9rem;
-}
-.lb-table th {
-    font-family: 'Inter', sans-serif !important;
-    color: #00e5ff;
-    letter-spacing: 0.1em;
-    font-size: 0.75rem;
-    padding: 0.5rem 0.75rem;
-    border-bottom: 1px solid #1e3a4f;
-    text-align: left;
-}
-.lb-table td {
-    font-family: 'Inter', sans-serif !important;
-    padding: 0.6rem 0.75rem;
-    border-bottom: 1px solid #111827;
-    color: #b0c4d8;
-}
-.lb-table tr:first-child td { color: #ffd700; }
-.lb-table tr:nth-child(2) td { color: #c0c0c0; }
-.lb-table tr:nth-child(3) td { color: #cd7f32; }
-.rank-badge {
-    display: inline-block;
-    width: 24px;
-    text-align: center;
-    font-weight: 700;
-}
-.score-pill {
-    background: rgba(0,229,255,0.1);
-    border: 1px solid #00e5ff33;
-    border-radius: 20px;
-    padding: 2px 10px;
-    color: #00e5ff;
-    font-weight: 700;
-    font-family: 'Inter', sans-serif !important;
-}
-
-/* ── success banner ── */
-.success-banner {
-    background: linear-gradient(135deg, #0d2b1a, #0d1f2d);
-    border: 1px solid #00e5a0;
-    border-radius: 12px;
-    padding: 1.5rem 2rem;
-    text-align: center;
-    margin: 1.5rem 0;
-    box-shadow: 0 0 30px rgba(0,229,160,0.1);
-}
-.success-banner h2 {
-    font-family: 'Inter', sans-serif !important;
-    color: #00e5a0;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    margin-bottom: 0.25rem;
-}
-.success-banner p {
-    font-family: 'Inter', sans-serif !important;
+/* ── join description ── */
+.join-desc {
+    font-weight: 300;
+    font-style: italic;
     color: #7a8ba0;
-    font-size: 1rem;
+    font-size: 0.95rem;
+}
+
+/* ── input labels ── */
+div[data-testid="stTextInput"] label,
+div[data-testid="stSelectbox"] label {
+    font-size: 1.1rem;
+    font-weight: 400;
 }
 
 /* ── input fields ── */
@@ -211,33 +78,68 @@ div[data-testid="stTextInput"] input {
     color: #e0e6f0 !important;
     border-color: #1e3a4f !important;
     border-radius: 8px;
-    font-family: 'Inter', sans-serif !important;
 }
+
 div[data-testid="stSelectbox"] div {
     background-color: #111827 !important;
     color: #e0e6f0 !important;
     border-color: #1e3a4f !important;
     border-radius: 8px;
-    font-family: 'Inter', sans-serif !important;
 }
 
-/* ── warnings / alerts ── */
-div[data-testid="stAlert"] p,
-div[data-testid="stAlert"] span {
-    font-family: 'Inter', sans-serif !important;
+/* ── button wrapper: transparent bg, centered ── */
+div[data-testid="stButton"],
+div.stButton {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    display: flex;
+    justify-content: center;
 }
 
-/* ── spinner ── */
-div[data-testid="stSpinner"] p {
-    font-family: 'Inter', sans-serif !important;
+/* ── button itself ── */
+div[data-testid="stButton"] > button,
+div.stButton > button {
+    background: linear-gradient(135deg, #0072ff, #00e5ff) !important;
+    color: #0b0f1a !important;
+    font-weight: 700;
+    font-size: 1.05rem;
+    border: none !important;
+    border-radius: 8px;
+    padding: 0.65rem 2rem;
+    width: auto;
+    box-shadow: 0 0 20px rgba(0,114,255,0.3) !important;
+    outline: none !important;
 }
 
-/* ── section divider ── */
+div[data-testid="stButton"] > button:hover,
+div.stButton > button:hover {
+    opacity: 0.88;
+}
+
+/* ── radio options ── */
+div[data-testid="stRadio"] label {
+    color: #b0c4d8 !important;
+    font-size: 1rem;
+}
+
+div[data-testid="stRadio"] label:hover {
+    color: #00e5ff !important;
+}
+
+/* ── progress bar ── */
+.stProgress > div > div > div > div {
+    background: linear-gradient(90deg, #00e5ff, #0072ff);
+}
+
+/* ── divider ── */
 .divider {
     height: 1px;
     background: linear-gradient(90deg, transparent, #1e3a4f, transparent);
     margin: 1.5rem 0;
 }
+
 </style>
 """, unsafe_allow_html=True)
 
@@ -363,30 +265,88 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
+# ─────────────────────────────────────────────
+#  LIVE LEADERBOARD HELPER  (plain function, called inside fragments per page)
+# ─────────────────────────────────────────────
+def _render_leaderboard():
+    total = len(QUESTIONS)
+    try:
+        docs = (
+            db.collection("leaderboard")
+              .order_by("score", direction=firestore.Query.DESCENDING)
+              .order_by("timestamp", direction=firestore.Query.ASCENDING)
+              .limit(10)
+              .stream()
+        )
+        rows = [d.to_dict() for d in docs]
+    except Exception:
+        st.markdown("<div style='color:#ffcc00;'>⏳ Leaderboard loading… (~1 min)</div>", unsafe_allow_html=True)
+        return
+
+    if not rows:
+        st.markdown("<div style='color:#9aa7b5;'>No scores yet — be the first!</div>", unsafe_allow_html=True)
+        return
+
+    table_rows = ""
+    for rank, row in enumerate(rows, start=1):
+        name_val  = row.get("name", "—")
+        sqn_val   = row.get("squadron", "—")
+        score_val = row.get("score", 0)
+        ttl_val   = row.get("total", total)
+        badge     = medal(rank)
+        table_rows += f"""
+        <tr>
+          <td><span class="rank-badge">{badge}</span></td>
+          <td>{name_val}</td>
+          <td>{sqn_val}</td>
+          <td><span class="score-pill">{score_val}/{ttl_val}</span></td>
+        </tr>"""
+
+    st.markdown(f"""
+    <div class="card">
+      <table class="lb-table">
+        <thead>
+          <tr>
+            <th>#</th><th>NAME</th><th>SQUADRON</th><th>SCORE</th>
+          </tr>
+        </thead>
+        <tbody>{table_rows}</tbody>
+      </table>
+    </div>
+    """, unsafe_allow_html=True)
+
 # ═════════════════════════════════════════════
 #  PAGE: JOIN
 # ═════════════════════════════════════════════
 if st.session_state.page == "join":
-    st.markdown('<div class="card">', unsafe_allow_html=True)
-    st.markdown("Fill in your details to begin. You have **one attempt** — make it count.")
+    st.markdown("### 🏆 Live Leaderboard")
+    st.caption("Auto-refreshes every 5 seconds.")
+
+    @st.fragment(run_every=5)
+    def leaderboard_join():
+        _render_leaderboard()
+
+    leaderboard_join()
+
+    st.markdown("---")
+    st.markdown('<div class="join-desc">Fill in your details to begin. You have <b>one attempt</b> — make it count.</div>', unsafe_allow_html=True)
     st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
 
     name = st.text_input("Full Name", placeholder="e.g. ME4A Nethan Tan", max_chars=60)
     squadron = st.selectbox("Squadron", ["— Select —"] + SQUADRONS)
 
     st.markdown("<br>", unsafe_allow_html=True)
+
     if st.button("🚀  JOIN & START QUIZ"):
         if not name.strip():
-            st.error("Please enter your name.")
+            st.markdown("<div style='color:#ff6b6b;'>Please enter your name.</div>", unsafe_allow_html=True)
         elif squadron == "— Select —":
-            st.error("Please select your squadron.")
+            st.markdown("<div style='color:#ff6b6b;'>Please select your squadron.</div>", unsafe_allow_html=True)
         else:
             st.session_state.name = name.strip()
             st.session_state.squadron = squadron
             st.session_state.page = "quiz"
             st.rerun()
-
-    st.markdown('</div>', unsafe_allow_html=True)
 
 # ═════════════════════════════════════════════
 #  PAGE: QUIZ
@@ -425,7 +385,7 @@ elif st.session_state.page == "quiz":
         }
         unanswered = total - len(final_answers)
         if unanswered > 0:
-            st.warning(f"⚠️ You have {unanswered} unanswered question(s). Answer all before submitting.")
+            st.markdown(f"<div style='color:#ffcc00;'>⚠️ You have {unanswered} unanswered question(s).</div>", unsafe_allow_html=True)
         else:
             score = calc_score(final_answers)
             st.session_state.score = score
@@ -461,50 +421,7 @@ elif st.session_state.page == "done":
     st.caption("Auto-refreshes every 5 seconds — no page reload needed.")
 
     @st.fragment(run_every=5)
-    def live_leaderboard():
-        try:
-            docs = (
-                db.collection("leaderboard")
-                  .order_by("score", direction=firestore.Query.DESCENDING)
-                  .order_by("timestamp", direction=firestore.Query.ASCENDING)
-                  .limit(10)
-                  .stream()
-            )
-            rows = [d.to_dict() for d in docs]
-        except Exception as e:
-            st.warning("⏳ Leaderboard index is still building — ready in ~1 min. Hang tight!")
-            return
+    def leaderboard_done():
+        _render_leaderboard()
 
-        if not rows:
-            st.info("No scores yet — be the first!")
-            return
-
-        table_rows = ""
-        for rank, row in enumerate(rows, start=1):
-            name_val  = row.get("name", "—")
-            sqn_val   = row.get("squadron", "—")
-            score_val = row.get("score", 0)
-            ttl_val   = row.get("total", total)
-            badge     = medal(rank)
-            table_rows += f"""
-            <tr>
-              <td><span class="rank-badge">{badge}</span></td>
-              <td>{name_val}</td>
-              <td>{sqn_val}</td>
-              <td><span class="score-pill">{score_val}/{ttl_val}</span></td>
-            </tr>"""
-
-        st.markdown(f"""
-        <div class="card">
-          <table class="lb-table">
-            <thead>
-              <tr>
-                <th>#</th><th>NAME</th><th>SQUADRON</th><th>SCORE</th>
-              </tr>
-            </thead>
-            <tbody>{table_rows}</tbody>
-          </table>
-        </div>
-        """, unsafe_allow_html=True)
-
-    live_leaderboard()
+    leaderboard_done()
