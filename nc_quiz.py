@@ -19,13 +19,36 @@ st.set_page_config(
 # ─────────────────────────────────────────────
 st.markdown("""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
-/* ── global ── */
-html, body, [class*="css"] {
-    font-family: 'Inter';
+/* ── global — force Inter on everything ── */
+html, body, [class*="css"], * {
+    font-family: 'Inter', sans-serif !important;
     background-color: #0b0f1a;
     color: #e0e6f0;
+}
+
+/* ── Streamlit native element overrides ── */
+.stMarkdown, .stMarkdown p, .stMarkdown h1,
+.stMarkdown h2, .stMarkdown h3, .stMarkdown li {
+    font-family: 'Inter', sans-serif !important;
+}
+
+p, span, div, label, input, select, textarea, button {
+    font-family: 'Inter', sans-serif !important;
+}
+
+div[data-testid="stTextInput"] label,
+div[data-testid="stTextInput"] input,
+div[data-testid="stSelectbox"] label,
+div[data-testid="stSelectbox"] div,
+div[data-testid="stSelectbox"] span,
+div[data-testid="stRadio"] label,
+div[data-testid="stRadio"] span,
+div[data-testid="stForm"] label,
+div[data-testid="stCaption"] p,
+div[data-testid="stMarkdownContainer"] p {
+    font-family: 'Inter', sans-serif !important;
 }
 
 /* ── hero header ── */
@@ -34,15 +57,16 @@ html, body, [class*="css"] {
     padding: 2rem 0 1rem;
 }
 .hero h1 {
-    font-size: 3rem;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 2.6rem;
     font-weight: 700;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.05em;
     color: #00e5ff;
     text-shadow: 0 0 20px rgba(0,229,255,0.5);
     margin-bottom: 0;
 }
 .hero p {
-    font-family: 'Inter';
+    font-family: 'Inter', sans-serif !important;
     color: #7a8ba0;
     font-size: 0.85rem;
     letter-spacing: 0.2em;
@@ -61,13 +85,14 @@ html, body, [class*="css"] {
 
 /* ── question label ── */
 .q-label {
-    font-family: 'Inter';
+    font-family: 'Inter', sans-serif !important;
     color: #00e5ff;
     font-size: 0.75rem;
     letter-spacing: 0.2em;
     margin-bottom: 0.25rem;
 }
 .q-text {
+    font-family: 'Inter', sans-serif !important;
     font-size: 1.15rem;
     font-weight: 600;
     color: #dce8f5;
@@ -81,6 +106,7 @@ html, body, [class*="css"] {
 
 /* ── radio options ── */
 div[data-testid="stRadio"] label {
+    font-family: 'Inter', sans-serif !important;
     color: #b0c4d8 !important;
     font-size: 1rem;
 }
@@ -92,10 +118,10 @@ div[data-testid="stRadio"] label:hover {
 div.stButton > button {
     background: linear-gradient(135deg, #0072ff, #00e5ff);
     color: #0b0f1a;
-    font-family: 'Inter';
+    font-family: 'Inter', sans-serif !important;
     font-weight: 700;
     font-size: 1.1rem;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.05em;
     border: none;
     border-radius: 8px;
     padding: 0.65rem 2.5rem;
@@ -108,22 +134,30 @@ div.stButton > button:hover {
     opacity: 0.88;
 }
 
+/* ── form submit button ── */
+div[data-testid="stFormSubmitButton"] button {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 700 !important;
+}
+
 /* ── leaderboard table ── */
 .lb-table {
     width: 100%;
     border-collapse: collapse;
-    font-family: 'Inter';
+    font-family: 'Inter', sans-serif !important;
     font-size: 0.9rem;
 }
 .lb-table th {
+    font-family: 'Inter', sans-serif !important;
     color: #00e5ff;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.1em;
     font-size: 0.75rem;
     padding: 0.5rem 0.75rem;
     border-bottom: 1px solid #1e3a4f;
     text-align: left;
 }
 .lb-table td {
+    font-family: 'Inter', sans-serif !important;
     padding: 0.6rem 0.75rem;
     border-bottom: 1px solid #111827;
     color: #b0c4d8;
@@ -144,6 +178,7 @@ div.stButton > button:hover {
     padding: 2px 10px;
     color: #00e5ff;
     font-weight: 700;
+    font-family: 'Inter', sans-serif !important;
 }
 
 /* ── success banner ── */
@@ -157,25 +192,44 @@ div.stButton > button:hover {
     box-shadow: 0 0 30px rgba(0,229,160,0.1);
 }
 .success-banner h2 {
+    font-family: 'Inter', sans-serif !important;
     color: #00e5a0;
     font-size: 2rem;
     font-weight: 700;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.05em;
     margin-bottom: 0.25rem;
 }
 .success-banner p {
+    font-family: 'Inter', sans-serif !important;
     color: #7a8ba0;
     font-size: 1rem;
 }
 
 /* ── input fields ── */
-div[data-testid="stTextInput"] input,
+div[data-testid="stTextInput"] input {
+    background-color: #111827 !important;
+    color: #e0e6f0 !important;
+    border-color: #1e3a4f !important;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif !important;
+}
 div[data-testid="stSelectbox"] div {
     background-color: #111827 !important;
     color: #e0e6f0 !important;
     border-color: #1e3a4f !important;
     border-radius: 8px;
-    font-family: 'Inter'
+    font-family: 'Inter', sans-serif !important;
+}
+
+/* ── warnings / alerts ── */
+div[data-testid="stAlert"] p,
+div[data-testid="stAlert"] span {
+    font-family: 'Inter', sans-serif !important;
+}
+
+/* ── spinner ── */
+div[data-testid="stSpinner"] p {
+    font-family: 'Inter', sans-serif !important;
 }
 
 /* ── section divider ── */
@@ -242,14 +296,10 @@ QUESTIONS = [
 SQUADRONS = ["FRS", "FGS", "FSS"]
 
 # ─────────────────────────────────────────────
-#  FIREBASE INIT  (singleton via session_state)
+#  FIREBASE INIT  (singleton via cache_resource)
 # ─────────────────────────────────────────────
 @st.cache_resource
 def get_firestore_client():
-    """
-    Initialise the Firebase Admin SDK once per Streamlit worker process.
-    Credentials are pulled from st.secrets (secrets.toml / Streamlit Cloud).
-    """
     if not firebase_admin._apps:
         key_dict = {
             "type":                        st.secrets["firebase"]["type"],
@@ -273,7 +323,7 @@ db = get_firestore_client()
 #  SESSION STATE DEFAULTS
 # ─────────────────────────────────────────────
 defaults = {
-    "page": "join",          # join | quiz | done
+    "page": "join",
     "name": "",
     "squadron": "",
     "answers": {},
@@ -293,7 +343,6 @@ def calc_score(answers: dict) -> int:
     )
 
 def submit_to_firestore(name: str, squadron: str, score: int):
-    """Write result with a server timestamp; Firestore handles concurrency."""
     db.collection("leaderboard").add({
         "name":      name,
         "squadron":  squadron,
@@ -369,7 +418,6 @@ elif st.session_state.page == "quiz":
         submitted = st.form_submit_button("🏁  SUBMIT MY ANSWERS", use_container_width=True)
 
     if submitted:
-        # Collect final answers from widget state
         final_answers = {
             i: st.session_state.get(f"radio_{i}")
             for i in range(total)
@@ -402,7 +450,7 @@ elif st.session_state.page == "done":
     <div class="success-banner">
       <h2>✅ SUBMISSION COMPLETE</h2>
       <p>Well done, <strong>{st.session_state.name}</strong> ({st.session_state.squadron})</p>
-      <p style="font-size:1.8rem;font-weight:700;color:#e0e6f0;margin-top:0.5rem;">
+      <p style="font-size:1.8rem;font-weight:700;color:#e0e6f0;margin-top:0.5rem;font-family:'Inter',sans-serif;">
         {score} / {total} &nbsp;·&nbsp; {pct}%
       </p>
     </div>
@@ -417,14 +465,18 @@ elif st.session_state.page == "done":
         try:
             docs = (
                 db.collection("leaderboard")
-                .order_by("score", direction=firestore.Query.DESCENDING)
-                .order_by("timestamp", direction=firestore.Query.ASCENDING)
-                .limit(10)
-                .stream()
+                  .order_by("score", direction=firestore.Query.DESCENDING)
+                  .order_by("timestamp", direction=firestore.Query.ASCENDING)
+                  .limit(10)
+                  .stream()
             )
             rows = [d.to_dict() for d in docs]
         except Exception as e:
             st.warning("⏳ Leaderboard index is still building — ready in ~1 min. Hang tight!")
+            return
+
+        if not rows:
+            st.info("No scores yet — be the first!")
             return
 
         table_rows = ""
